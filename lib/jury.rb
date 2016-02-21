@@ -1,6 +1,6 @@
 class Jury
  
-  attr_writer :members
+  attr_accessor :members
 
   @@members = []
 
