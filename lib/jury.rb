@@ -2,27 +2,24 @@ class Jury
  
   attr_accessor :members
 
-  @@members = []
-
   def initialize
-  	@@members = []
+  	@members = []
   end
 
   def add_member(member)
-  	@@members << member
-  end
-
-  def members
-  	return @@members
+  	@members << member
   end
 
   def cast_votes(finalists)
   	votes = Hash.new(0)
   	
-  	finalists.each do |finalist|
-  	  votes[finalist] += 1	  
-  	end
-  	
+    @members.each do |name|
+    	random = Random.new.rand(2)
+    	finalist = finalists[random-1]
+    	puts finalist
+    	votes[finalist] += 1
+    end
+
   	return votes
   end
 

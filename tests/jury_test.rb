@@ -33,14 +33,14 @@ class TestJury < Minitest::Test
     assert_equal 2, @jury.cast_votes(@finalists).length
   end
   
-  #def test_cast_votes_every_member_vote_puts_to_terminal
-  #  @jury.members = @jury_members
-  #  output = capture_io do
-  #    @jury.cast_votes(@finalists)
-  #  end
-  #  output = output[0].split("\n").length
-  #  assert_equal 7, output
-  #end
+  def test_cast_votes_every_member_vote_puts_to_terminal
+    @jury.members = @jury_members
+    output = capture_io do
+      @jury.cast_votes(@finalists)
+    end
+    output = output[0].split("\n").length
+    assert_equal 7, output
+  end
   
   #def test_cast_votes_total_votes_equals_seven
   #   total_votes = 0
