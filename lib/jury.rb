@@ -16,11 +16,21 @@ class Jury
     @members.each do |name|
     	random = Random.new.rand(2)
     	finalist = finalists[random-1]
-    	puts finalist
+    	puts "#{name} vote for #{finalist}"
     	votes[finalist] += 1
     end
 
   	return votes
+  end
+
+  def report_votes(final_votes)
+  	final_votes.each do |name, count|
+  	  puts "#{name}: #{count}"
+  	end
+  end
+
+  def announce_winner(final_votes)
+    return final_votes.sort_by {|k,v| v}.last.first
   end
 
 end
