@@ -18,14 +18,22 @@ require_relative "jury"
 #=========================================================
 
 
-#This is where you will write your code for the three phases
+# This is where you will write your code for the three phases
+
+# Tribes compete in 8 challenges in an immunity challenge. There is a losing tribe every time.
+# One contestant from the losing tribe is eliminated after every challenge at what is called a “Tribal Council”
 def phase_one
+	(1..8).each do |round|
+	  puts round
+	end
 end
 
 def phase_two
+	3
 end
 
 def phase_three
+    7
 end
 
 

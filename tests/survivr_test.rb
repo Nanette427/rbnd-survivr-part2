@@ -8,7 +8,7 @@ require_relative "../lib/jury"
 class TestSurvivr < Minitest::Test
 
   def setup
-    #testing game mechanics
+    # Testing game mechanics
     # Create an array of twenty hopefuls to compete on the island of Borneo
     @contestants = %w(carlos walter aparna trinh diego juliana poornima juha sofia julia fernando dena orit colt zhalisa farrin muhammed ari rasha gauri)
     @contestants.map!{ |contestant| Contestant.new(contestant) }.shuffle!
@@ -27,11 +27,11 @@ class TestSurvivr < Minitest::Test
     assert_equal 8, phase_one
   end
 
-  # def test_phase_two
-  #   assert_equal 3, phase_two
-  # end
-  #
-  # def test_phase_three
-  #   assert_equal 7, phase_three
-  # end
+  def test_phase_two
+    assert_equal 3, phase_two
+  end
+  
+  def test_phase_three
+    assert_equal 7, phase_three
+  end
 end
