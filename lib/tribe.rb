@@ -15,16 +15,17 @@ class Tribe
   	@name
   end
 
-  def tribal_council(immune)
+  def tribal_council(options)
+    immune          = options[:immune]
   	votable_members = self.members
-    votable_members.delete(immune) 
+    votable_members.delete_if { |member|  member == immune }
   	votes           = Hash.new(0)
     members.each do |member|
 	    random           = Random.new.rand(votable_members.size)
-      vote_for         = members[random - 1]
+      vote_for         = votable_members[random - 1]
       votes[vote_for] += 1
   	end
-    [votes.sort_by {|k,v| v}.last.first]
+    votes.sort_by {|k,v| v}.last.first  
   end
 
 end
