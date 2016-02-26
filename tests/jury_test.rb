@@ -43,10 +43,10 @@ class TestJury < Minitest::Test
   end
   
   def test_cast_votes_total_votes_equals_seven
-     total_votes   = 0
-     @jury.members = @jury_members
-     @jury.cast_votes(@finalists).each {|k,v| total_votes += v}
-     assert_equal 7, total_votes
+    total_votes   = 0
+    @jury.members = @jury_members
+    @jury.cast_votes(@finalists).each {|k,v| total_votes += v}
+    assert_equal 7, total_votes
   end
 
   #def test_cast_votes_voting_seems_random

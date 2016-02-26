@@ -1,3 +1,4 @@
+require "colorizer"
 require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
@@ -11,7 +12,7 @@ require_relative "jury"
 
 # Create two new tribes with names
 @coyopa = Tribe.new(name: "Pagong", members: @contestants.shift(10))
-@hunapu = Tribe.new(name: "Tagi", members: @contestants.shift(10))
+@hunapu = Tribe.new(name: "Tagi",   members: @contestants.shift(10))
 
 # Create a new game of Survivor
 @borneo = Game.new(@coyopa, @hunapu)
@@ -24,7 +25,7 @@ require_relative "jury"
 # There is a losing tribe every time.
 # Eliminated 1 candidate from the loosing team
 def phase_one
-	puts "Phase 1"
+	puts "Phase 1".light_yellow
 	8.times do |round|
 	  immunity_looser      = @borneo.immunity_challenge
 	  eliminated_candidate = immunity_looser.tribal_council
@@ -40,7 +41,7 @@ end
 # One contestant is eliminated after every challenge.
 # After 3 eliminations, there are 9 remaining contestants.
 def phase_two
-	puts "Phase 2"
+	puts "Phase 2".light_yellow
 	3.times do |round|
 		immune               = @borneo.individual_immunity_challenge
 		eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
@@ -53,7 +54,7 @@ end
 # However, each contestant that is eliminated during these challenges is set aside to another group, known as the jury.
 # This leaves 2 finalists and 7 jury members.
 def phase_three
-	puts "Phase 3"
+	puts "Phase 3".light_yellow
 	7.times do |round|
 		immune               = @borneo.individual_immunity_challenge
 		eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
