@@ -1,3 +1,4 @@
+require "colorizer"
 require 'minitest/autorun'
 require_relative "../lib/survivr"
 require_relative "../lib/game"

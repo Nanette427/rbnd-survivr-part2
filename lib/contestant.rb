@@ -5,6 +5,7 @@ class Contestant
   	@name = name
   end
 
+  # Return the name of the contestant
   def to_s
   	@name
   end

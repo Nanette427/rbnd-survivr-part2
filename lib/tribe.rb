@@ -11,10 +11,16 @@ class Tribe
   	end
   end
 
+  # Return name of the tribe
   def to_s
-  	@name.capitalize
+  	@name
   end
 
+  # Return the elimintated candidate
+  # 
+  # Params: 
+  #   +options+:: a hash of options (optionnal)
+  #     +immune+:: the immune candidate
   def tribal_council(options={})
     immune          = options[:immune]
   	votable_members = self.members

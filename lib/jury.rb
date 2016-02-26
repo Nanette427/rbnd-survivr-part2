@@ -25,10 +25,10 @@ class Jury
 
     votes = Hash.new(0)
     @members.each do |name|
-    	random   = Random.new.rand(finalists_size)
-    	finalist = finalists[random-1]
+    	random           = Random.new.rand(finalists_size)
+    	finalist         = finalists[random-1]
+      votes[finalist] += 1
     	puts "#{name} vote for #{finalist}"
-    	votes[finalist] += 1
     end
 
   	return votes
