@@ -5,7 +5,7 @@ class Tribe
   def initialize(options)
   	@name    = options[:name]
   	@members = options[:members] 
-  	puts "#{name}:"
+  	puts "The members of #{name} are:"
   	@members.each do |member|
   		puts member.name
   	end
@@ -15,7 +15,7 @@ class Tribe
   	@name
   end
 
-  def tribal_council(options)
+  def tribal_council(options={})
     immune          = options[:immune]
   	votable_members = self.members
     votable_members.delete_if { |member|  member == immune }

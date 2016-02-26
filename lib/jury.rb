@@ -30,7 +30,9 @@ class Jury
   end
 
   def announce_winner(final_votes)
-    return final_votes.sort_by {|k,v| v}.last.first
+    winner = final_votes.sort_by {|k,v| v}.last.first
+    puts "And the winner is #{winner}"
+    winner
   end
 
 end
