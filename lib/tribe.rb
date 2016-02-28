@@ -5,7 +5,7 @@ class Tribe
   def initialize(options)
   	@name    = options[:name]
   	@members = options[:members] 
-  	puts "The members of #{name} are:".light_cyan if !@members.empty?
+  	puts "The members of #{name} are:".to_header.light_cyan if !@members.empty?
   	@members.each do |member|
   		puts member.name
   	end

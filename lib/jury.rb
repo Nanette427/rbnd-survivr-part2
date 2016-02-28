@@ -52,7 +52,7 @@ class Jury
   #    (key == name and value == count)
   def announce_winner(final_votes)
     winner = final_votes.sort_by {|k,v| v}.last.first
-    puts "And the winner is #{winner}".green
+    puts "And the winner is #{winner}".to_header.green
     winner
   end
 

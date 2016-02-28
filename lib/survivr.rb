@@ -1,4 +1,5 @@
 require "colorizer"
+require "header"
 require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
@@ -21,11 +22,12 @@ require_relative "jury"
 
 # This is where you will write your code for the three phases
 
-# Tribes compete in 8 immunity challenge. 
-# There is a losing tribe every time.
-# Eliminated 1 candidate from the loosing team
+# In phase one:
+#   - Tribes compete in 8 immunity challenge. 
+#   - There is a losing tribe every time.
+#   - Eliminated 1 candidate from the loosing team
 def phase_one
-	puts "Phase 1".light_yellow
+	puts "Phase 1".to_header.light_yellow
 	8.times do |round|
 	  immunity_looser      = @borneo.immunity_challenge
 	  eliminated_candidate = immunity_looser.tribal_council
@@ -35,13 +37,13 @@ def phase_one
 end
 
 
-# The single tribe of 12 contestants.
-# Compete in 3 additional individual immunity challenges.
-# The individual winner of every challenge is immune from being eliminated.
-# One contestant is eliminated after every challenge.
-# After 3 eliminations, there are 9 remaining contestants.
+# In phase 2, a single tribe of 12 contestants.
+#   - Compete in 3 additional individual immunity challenges.
+#   - The winner of every challenge is immune from being eliminated.
+#   - One contestant is eliminated after every challenge.
+#   - After 3 eliminations, there are 9 remaining contestants.
 def phase_two
-	puts "Phase 2".light_yellow
+	puts "Phase 2".to_header.light_yellow
 	3.times do |round|
 		immune               = @borneo.individual_immunity_challenge
 		eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
@@ -50,11 +52,12 @@ def phase_two
 	end
 end
 
-# 7 more challenges with an “immune” winner.
-# However, each contestant that is eliminated during these challenges is set aside to another group, known as the jury.
-# This leaves 2 finalists and 7 jury members.
+# In phase 3:
+#   - 7 more challenges with an “immune” winner.
+#   - Each contestant that is eliminated go in the jury.
+#   - This leaves 2 finalists and 7 jury members.
 def phase_three
-	puts "Phase 3".light_yellow
+	puts "Phase 3".to_header.light_yellow
 	7.times do |round|
 		immune               = @borneo.individual_immunity_challenge
 		eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
