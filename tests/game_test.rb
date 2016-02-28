@@ -1,4 +1,3 @@
-require "colorizer"
 require 'minitest/autorun'
 require_relative "../lib/game"
 require_relative "../lib/tribe"

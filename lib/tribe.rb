@@ -23,7 +23,7 @@ class Tribe
   #     +immune+:: the immune candidate
   def tribal_council(options={})
     immune          = options[:immune]
-  	votable_members = self.members
+  	votable_members = self.members.dup
     votable_members.delete_if { |member|  member == immune }
   	votes           = Hash.new(0)
     members.each do |member|

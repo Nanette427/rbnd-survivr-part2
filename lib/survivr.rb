@@ -27,13 +27,13 @@ require_relative "jury"
 #   - There is a losing tribe every time.
 #   - Eliminated 1 candidate from the loosing team
 def phase_one
-	puts "Phase 1".to_header.light_yellow
-	8.times do |round|
-	  immunity_looser      = @borneo.immunity_challenge
-	  eliminated_candidate = immunity_looser.tribal_council
-	  immunity_looser.members.delete(eliminated_candidate)
-	  puts "For round #{round + 1}: #{eliminated_candidate.name} is out"
-	end
+  puts "Phase 1".to_header.light_yellow
+  8.times do |round|
+    immunity_looser      = @borneo.immunity_challenge
+    eliminated_candidate = immunity_looser.tribal_council
+    immunity_looser.members.delete(eliminated_candidate)
+    puts "For round #{round + 1}: #{eliminated_candidate.name.red} is out"
+  end
 end
 
 
@@ -43,13 +43,13 @@ end
 #   - One contestant is eliminated after every challenge.
 #   - After 3 eliminations, there are 9 remaining contestants.
 def phase_two
-	puts "Phase 2".to_header.light_yellow
-	3.times do |round|
-		immune               = @borneo.individual_immunity_challenge
-		eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
-		@merge_tribe.members.delete(eliminated_candidate)
-	  puts "For round #{round + 1}: #{eliminated_candidate.name} is out"
-	end
+  puts "Phase 2".to_header.light_yellow
+  3.times do |round|
+    immune               = @borneo.individual_immunity_challenge
+    eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
+    @merge_tribe.members.delete(eliminated_candidate)
+    puts "For round #{round + 1}: #{eliminated_candidate.name.red} is out"
+  end
 end
 
 # In phase 3:
@@ -57,13 +57,14 @@ end
 #   - Each contestant that is eliminated go in the jury.
 #   - This leaves 2 finalists and 7 jury members.
 def phase_three
-	puts "Phase 3".to_header.light_yellow
-	7.times do |round|
-		immune               = @borneo.individual_immunity_challenge
-		eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
-		@jury.members << eliminated_candidate
-	  puts "For round #{round + 1}: #{eliminated_candidate.name} is out"
-	end
+  puts "Phase 3".to_header.light_yellow
+  7.times do |round|
+    immune               = @borneo.individual_immunity_challenge
+    eliminated_candidate = @merge_tribe.tribal_council(immune: immune)
+    @merge_tribe.members.delete(eliminated_candidate)
+    @jury.members << eliminated_candidate
+    puts "For round #{round + 1}: #{eliminated_candidate.name.red} is out"
+  end
 end
 
 
@@ -74,7 +75,9 @@ phase_one #8 eliminations
 phase_two #3 more eliminations
 @jury = Jury.new
 phase_three #7 elminiations become jury members
-finalists = @merge_tribe.members #set finalists
+finalists    = @merge_tribe.members #set finalists
+puts "Cast final votes".to_header.light_yellow
 vote_results = @jury.cast_votes(finalists) #Jury members report votes
+puts "Announces".to_header.light_yellow
 @jury.report_votes(vote_results) #Jury announces their votes
 @jury.announce_winner(vote_results) #Jury announces final winner
