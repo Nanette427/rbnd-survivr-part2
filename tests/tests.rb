@@ -1,5 +1,5 @@
 require "colorizer"
-require "header"
+require "string_header"
 
 #Start Here
 #This test file combines each of the other test files. Uncomment them in order, or you will run into dependency errors.

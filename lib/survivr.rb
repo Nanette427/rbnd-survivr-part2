@@ -1,5 +1,5 @@
 require "colorizer"
-require "header"
+require "string_header"
 require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
